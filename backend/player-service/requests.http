@@ -1,0 +1,28 @@
+### Create a new Player
+POST http://localhost:8081/api/v1/players
+Content-Type: application/json
+
+{
+  "fullName": "Cristiano Ronaldo",
+  "position": "Forward",
+  "nationality": "Portugal"
+}
+### Creating another player
+POST http://localhost:8081/api/v1/players
+Content-Type: application/json
+
+{
+"fullName": "Lionel Messi",
+"position": "Forward",
+"nationality": "Argentina"
+}
+
+### Creating another player
+POST http://localhost:8081/api/v1/players
+Content-Type: application/json
+
+{
+  "fullName": "Neymar.Jr",
+  "position": "Forward",
+  "nationality": "Brazil"
+}
