@@ -4,10 +4,10 @@ import io.tactico.playerservice.model.Player;
 import io.tactico.playerservice.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/players")
@@ -26,4 +26,19 @@ public class PlayerController {
 
          */
     }
+    @GetMapping
+    public ResponseEntity<List<Player>> getAllPlayers() {
+        List<Player> players = playerRepository.findAll();
+
+        return ResponseEntity.ok(players);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Player> getPlayersById(@PathVariable Long id) {
+        Optional<Player> playerOptional = playerRepository.findById(id);
+        // why this? If a player is not found, then the test response could be an error (not 200)
+        return playerOptional.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }
