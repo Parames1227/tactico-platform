@@ -34,3 +34,72 @@ GET http://localhost:8081/api/v1/players
 GET http://localhost:8081/api/v1/players/3
 ### Get a Single Player By ID
 GET http://localhost:8081/api/v1/players/2
+
+### Create a new Team
+POST http://localhost:8081/api/v1/teams
+Content-Type: application/json
+
+{
+  "name": "FC Barcelona",
+  "country": "Spain"
+}
+
+### Create a new Team
+POST http://localhost:8081/api/v1/teams
+Content-Type: application/json
+
+{
+  "name": "Real Madrid",
+  "country": "Spain"
+}
+
+### Create a new Team
+POST http://localhost:8081/api/v1/teams
+Content-Type: application/json
+
+{
+  "name": "Atletico Madrid",
+  "country": "Spain"
+}
+
+### Create a new Team
+POST http://localhost:8081/api/v1/teams
+Content-Type: application/json
+
+{
+  "name": "Liverpool",
+  "country": "England"
+}
+
+
+### Create a new Team
+POST http://localhost:8081/api/v1/teams
+Content-Type: application/json
+
+{
+  "name": "Manchester United",
+  "country": "England"
+}
+
+
+### Create a new Team
+POST http://localhost:8081/api/v1/teams
+Content-Type: application/json
+
+{
+  "name": "Arsenal",
+  "country": "England"
+}
+
+### Create a new Player FOR that Team (use the ID from the response above)
+POST http://localhost:8081/api/v1/players
+Content-Type: application/json
+
+{
+  "fullName": "Steven Gerrard",
+  "position": "Midfielder",
+  "nationality": "England",
+  "team": {
+    "id": 8
+  }
+}

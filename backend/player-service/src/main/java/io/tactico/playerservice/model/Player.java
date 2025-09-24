@@ -15,4 +15,8 @@ public class Player {
     private String fullName;
     private String position;
     private String nationality;
+
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
 }

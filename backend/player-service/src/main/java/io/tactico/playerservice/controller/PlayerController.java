@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/v1/players")
 public class PlayerController {
@@ -39,6 +39,10 @@ public class PlayerController {
         // why this? If a player is not found, then the test response could be an error (not 200)
         return playerOptional.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+    @GetMapping("/test")
+    public String testEndpoint() {
+        return "Player service is running on port 8081!";
     }
 
 }
