@@ -44,6 +44,26 @@ public class PlayerController {
     public String testEndpoint() {
         return "Player service is running on port 8081!";
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Player> updatePlayer(@PathVariable Long id, @RequestBody Player playerDetails)
+    {
+        Optional<Player> optionalPlayer = playerRepository.findById(id);
+        if (optionalPlayer.isPresent())
+        {
+            Player existingPlayer = optionalPlayer.get();
+            existingPlayer.setFullName(playerDetails.getFullName());
+            existingPlayer.setPosition(playerDetails.getPosition());
+            existingPlayer.setNationality(playerDetails.getNationality());
+            existingPlayer.setTeam(playerDetails.getTeam());
+            Player updatedPlayer = playerRepository.save(existingPlayer);
+            return ResponseEntity.ok(updatedPlayer);
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     public ResponseEntity<Void> deletePlayer(@PathVariable Long id) {
         if (!playerRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
