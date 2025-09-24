@@ -44,5 +44,12 @@ public class PlayerController {
     public String testEndpoint() {
         return "Player service is running on port 8081!";
     }
+    public ResponseEntity<Void> deletePlayer(@PathVariable Long id) {
+        if (!playerRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        playerRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
