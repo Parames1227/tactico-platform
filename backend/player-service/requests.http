@@ -103,3 +103,9 @@ Content-Type: application/json
     "id": 8
   }
 }
+
+### Trigger re-indexing of players
+POST http://localhost:8083/api/v1/index/reindex
+
+### Search for a player
+GET http://localhost:8083/api/v1/search/players?q=messi
